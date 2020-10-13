@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Container, Logo, MenuItem } from './style';
+import { Container, Logo } from './style';
 
 const Header: React.FunctionComponent = () => {
   return (
     <Container>
-      <MenuItem>SIMULAÇÃO</MenuItem>
+      {/* <MenuItem>SIMULAÇÃO</MenuItem> */}
       <Logo />
-      <MenuItem>PARCEIROS</MenuItem>
+      {/* <MenuItem>PARCEIROS</MenuItem> */}
     </Container>
   );
 };

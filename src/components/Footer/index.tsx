@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { Container, Logo, MenuItem } from './style';
+import { Container, MenuItem } from './style';
 
 const Header: React.FunctionComponent = () => {
   return (
     <Container>
-      <MenuItem>SIMULAÇÃO</MenuItem>
-      <Logo />
-      <MenuItem>PARCEIROS</MenuItem>
+      <MenuItem>Site FICTÍCIO criado pela Agilus Informática</MenuItem>
     </Container>
   );
 };

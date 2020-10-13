@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import {
-  Agilus,
   Card,
   FirstSection,
   Simulation,
   ThirdSection,
   ArrowDown,
-  FloatingMessage,
   Button,
   Partners,
 } from './style';
@@ -25,8 +23,14 @@ import partnerHandShake from '../../assets/images/partner.png';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Modal, { ModalHandles } from '../../components/Modal';
 
 const Home: React.FC = () => {
+  const modalRef = useRef<ModalHandles>(null);
+
+  const handleOpenModal = useCallback(() => {
+    modalRef.current?.openModal();
+  }, []);
   return (
     <>
       <FirstSection>
@@ -43,14 +47,15 @@ const Home: React.FC = () => {
         <p>
           FAÇA UMA SIMULAÇÃO AGORA MESMO E DESCUBRA QUAL É O MELHOR PLANO QUE
           TEMOS PARA VOCÊ! <br />
-          <Button>Simular</Button>
+          <Button onClick={handleOpenModal}>Simular</Button>
         </p>
         <img src={healthInsurance} alt="partner's hand" />
       </Simulation>
+      <Modal ref={modalRef} />
       <ThirdSection>
         <div>
           <p id="title">SAÚDE DE QUALIDADE POR UM PREÇO ACESSÍVEL</p>
-          <FloatingMessage>
+          <div id="floatingMessage">
             <p>
               Temos como Missão a oferta da excelência na administração de
               benefícios e gestão de saúde, somos movidos pela satisfação e
@@ -64,7 +69,7 @@ const Home: React.FC = () => {
               satisfação tanto do cliente quanto da nossa equipe de
               colaboradores.
             </p>
-          </FloatingMessage>
+          </div>
         </div>
       </ThirdSection>
       <Partners>
@@ -100,7 +105,7 @@ const Home: React.FC = () => {
           </Card>
         </div>
       </Partners>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

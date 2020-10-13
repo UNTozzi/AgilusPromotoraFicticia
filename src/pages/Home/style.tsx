@@ -4,10 +4,6 @@ import familyBg from '../../assets/images/happy-family.jpg';
 // import seatOnPier from '../../assets/images/seatOnPier.jpg';
 import businessPeople from '../../assets/images/businessPeople.png';
 
-export const Agilus = styled.iframe`
-  width: 60%;
-`;
-
 export const Card = styled.div`
   width: 10vw;
   height: 15vh;
@@ -20,24 +16,6 @@ export const Card = styled.div`
   & > img {
     width: 100%;
     height: 100%;
-  }
-`;
-
-export const FloatingMessage = styled.div`
-  display: flex;
-  align-self: start;
-  align-items: center;
-
-  width: 70vw;
-
-  background: rgba(0, 0, 0, 0.2);
-
-  & > p {
-    padding: 16px;
-    font-family: Verdana, sans-serif;
-    color: var(--white);
-    font-size: clamp(0.7rem, 1rem, 2rem);
-    text-shadow: 1px 1px var(--darkSand);
   }
 `;
 
@@ -140,15 +118,11 @@ export const Simulation = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  & > ${Agilus} {
-    visibility: hidden;
-  }
-
   & > p,
   & > p > ${Button} {
     font-family: Verdana, sans-serif;
     font-weight: bolder;
-    font-size: clamp(0.7rem, 1.6rem, 2rem);
+    font-size: clamp(0.7rem, 5vw, 2rem);
     color: black;
   }
 
@@ -167,17 +141,35 @@ export const Simulation = styled.div`
       background: black;
       cursor: pointer;
     }
-
-    &:target {
-      ${Agilus} {
-        visibility: visible;
-      }
-    }
   }
 
   & > img {
     justify-self: start;
     max-width: 40vw;
+  }
+
+  @media (max-width: 950px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    grid-template-areas: 'image' 'text';
+
+    width: 100%;
+    min-height: max-content;
+
+    & > img {
+      grid-area: image;
+      justify-self: center;
+      max-width: 100vw;
+      width: clamp(40vw, 75%, 100vw);
+    }
+
+    & > p {
+      grid-area: text;
+      justify-self: center;
+      width: 100%;
+      margin: 0 3vh 3vh 0;
+    }
   }
 `;
 
@@ -189,15 +181,12 @@ export const ThirdSection = styled.div`
 
   height: max-content;
   min-height: 70vh;
-  overflow-x: hidden;
 
   & > div {
     min-height: 70vh;
     width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.2);
@@ -205,18 +194,45 @@ export const ThirdSection = styled.div`
     & > p {
       font-family: Verdana, sans-serif;
       font-weight: bolder;
-      font-size: clamp(0.7rem, 1.6rem, 2rem);
+      font-size: clamp(0.7rem, 5vw, 2rem);
       color: var(--grayLight);
       text-align: center;
       text-shadow: 2px 2px var(--darkSand);
 
       width: 30vw;
-      margin: 15vh 0 5vh 0;
+
+      justify-self: center;
     }
 
-    & > ${FloatingMessage} {
-      margin-bottom: 10vh;
-      align-self: center;
+    & > #floatingMessage {
+      display: flex;
+      justify-self: center;
+      align-items: center;
+
+      width: 70vw;
+      margin-bottom: 5vh;
+
+      background: rgba(0, 0, 0, 0.2);
+
+      & > p {
+        padding: 16px;
+        font-family: Verdana, sans-serif;
+        color: var(--white);
+        font-size: clamp(0.7rem, 1rem, 2rem);
+        text-shadow: 1px 1px var(--darkSand);
+      }
+    }
+  }
+
+  @media (max-width: 950px) {
+    & > div {
+      & > #title {
+        width: 100%;
+      }
+
+      & > #floatingMessage {
+        width: clamp(40vw, 85%, 100vw);
+      }
     }
   }
 `;
