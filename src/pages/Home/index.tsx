@@ -45,8 +45,14 @@ const Home: React.FC = () => {
       </FirstSection>
       <Simulation>
         <p>
-          FAÇA UMA SIMULAÇÃO AGORA MESMO E DESCUBRA QUAL É O MELHOR PLANO QUE
-          TEMOS PARA VOCÊ! <br />
+          <span className="rowBefore">Faça</span>{' '}
+          <span className="rowBefore">uma</span>{' '}
+          <span className="rowBefore">simulação</span> agora mesmo e{' '}
+          <span className="rowBefore">descubra</span> qual é o{' '}
+          <span className="rowBefore">melhor</span>{' '}
+          <span className="rowBefore">plano</span> que temos para{' '}
+          <span className="rowBefore">você!</span>
+          <br />
           <Button onClick={handleOpenModal}>Simular</Button>
         </p>
         <img src={healthInsurance} alt="partner's hand" />

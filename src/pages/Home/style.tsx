@@ -119,6 +119,7 @@ export const Simulation = styled.div`
   align-items: center;
 
   & > p,
+  & > p > .rowBefore,
   & > p > ${Button} {
     font-family: Verdana, sans-serif;
     font-weight: bolder;
@@ -126,9 +127,28 @@ export const Simulation = styled.div`
     color: black;
   }
 
-  & > p {
+  & > p,
+  & > p > .rowBefore {
     text-align: end;
     width: 30%;
+  }
+
+  & > p > .rowBefore {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      position: absolute;
+
+      content: '';
+
+      z-index: -1;
+      background-color: #f38797;
+      height: 30%;
+      top: 65%;
+      left: -3%;
+      width: 95%;
+    }
   }
 
   & > p > ${Button} {
